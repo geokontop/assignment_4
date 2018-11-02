@@ -1,4 +1,4 @@
-# Assignment_3
+# Assignment_4
 
 ## CLI
 
@@ -7,7 +7,7 @@
 - exit: Exits the CLI and kills the app,
 - stats: Get statistics of the underlying operating system and resourse utilization,
 - menu : Show the menu,
-- pizza --{pizzaId} : Show pizza\s details for the specific id,
+- pizza --{pizzaId} : Show pizza's details for the specific id,
 - orders --{hours} : Show recent orders. If the optional flag --{hours} is used, show the orders made the last {hours} hours. If it is not used, show the orders for the last 24 hours,
 - order info --{orderId} : Show details for the specified order,
 - users --{hours} : Show recent users. If the optional flag --{hours} is used, show the users that signed up the last {hours} hours. If it is not used, use 24 hours as default,
