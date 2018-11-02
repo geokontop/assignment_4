@@ -136,6 +136,9 @@ responders.pizza = (str)=>{
                 helpers.verticalSpace();
                 console.dir(pizzaData,{'colors':true});
                 helpers.verticalSpace();
+
+                // Print end line
+                helpers.horizontalLine()
             }
         })
     }
@@ -191,25 +194,31 @@ responders.order = (str)=>{
                 helpers.verticalSpace();
             
                 // Print order elements
+
+                // User
                 helpers.verticalSpace();
                 console.log('Customer:')
                 console.log(orderData.customer)
                 helpers.verticalSpace();
+                // Cart contents
                 console.log('Items:')
                 orderData.items.cart.forEach((element)=>{
                     console.log('     ',element)
                 })
                 helpers.verticalSpace(2);
+                // Totol value
                 console.log('Total:')
                 console.log('     ',orderData.items.total)
                 helpers.verticalSpace();
+                // Print end line
+                helpers.horizontalLine()
             }
         })
     }
 
 }
 
-// ********** Show the list of users signed up the last {hours} **********
+// ********** Show the list of users signed up the last {hours} hours**********
 responders.users = (str)=>{
        
     // Evaluate recent {hours} value
@@ -230,7 +239,9 @@ responders.users = (str)=>{
                 console.log(user);
                 helpers.verticalSpace();
             })
-        }        
+        }   
+        // Print end line
+        helpers.horizontalLine()     
     })
 }
 
@@ -257,7 +268,10 @@ responders.user = (str)=>{
                 helpers.verticalSpace();
                 console.dir(userData,{'colors':true});
                 helpers.verticalSpace();
+                
             }
+            // Print end line
+            helpers.horizontalLine()
         })
     }
 
