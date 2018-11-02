@@ -6,6 +6,7 @@
  // Dependencies
  const server = require('./src/server');
  const workers = require('./src/services/workers');
+ const cli = require('./src/controllers/cli');
 
 // App container
 const app = {};
@@ -18,6 +19,10 @@ app.init = ()=>{
     // Start the workers
     workers.init();
 
+    // Start the cli after a 50 msec delay
+    setTimeout(() => {
+        cli.init();
+    }, 50);
 }
 
 // Execute

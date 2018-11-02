@@ -140,6 +140,38 @@ lib.list = function(dir, callback){
     });
 };
 
+// List all files in a directory created the last x hours
+lib.listDateCreated = function(dir, hours, callback){
+    // Get all files in the directory
+    fs.readdir(lib.baseDir+dir+'/', function(err, data){
+        if(!err && data && data.length > 0){
+            // Initialize the result array
+            let trimmedFileNames = [];
+            // Use counter to signal completion of files check
+            counter = 0;
+            data.forEach(function(fileName){
+                // Get the stats for each file
+                fs.stat(lib.baseDir+dir + '/' + fileName, (err, stat) => {
+                    // Check if stat value birthtimeMs (creation timestamp) is {hours} old
+                    if((Date.now() - Math.round(stat.birthtimeMs))/(1000*60*60)<hours){
+                        // If not hours old, push the trimmed file name in the result array
+                        trimmedFileNames.push(fileName.replace('.json', ''));
+                    }
+                    // Count that file
+                    counter++;
+                    // If all files have been checked, the right filenames have been gathered, so execute the callback
+                    if (counter == data.length){
+                        callback(false, trimmedFileNames);
+                    }
+                })                
+            });
+            
+        }else{
+            callback(err, data);
+        }
+    });
+};
+
  // Export module
  module.exports = lib;
 
